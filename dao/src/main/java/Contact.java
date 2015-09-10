@@ -9,7 +9,7 @@ public class Contact {
 
 
 
-    private int idContact;
+    private final int idContact;
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
