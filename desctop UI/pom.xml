@@ -11,5 +11,6 @@
 
     <artifactId>Maven Desctop UI</artifactId>
 
+    <name>Desctop UI</name>
 
 </project>

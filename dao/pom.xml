@@ -11,5 +11,6 @@
 
     <artifactId>Maven DAO</artifactId>
 
+    <name>DAO</name>
 
 </project>

@@ -11,5 +11,7 @@
 
     <artifactId>Maven Core API</artifactId>
 
+    <name>Core API</name>
+
 
 </project>

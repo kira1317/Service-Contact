@@ -11,5 +11,6 @@
 
     <artifactId>Maven Core IMPL</artifactId>
 
+    <name>Core IMPL</name>
 
 </project>
