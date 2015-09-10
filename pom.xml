@@ -7,8 +7,15 @@
     <groupId>ServiceContact</groupId>
     <artifactId>MavenServiseContact</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>core api</module>
+        <module>core impl</module>
+        <module>dao</module>
+        <module>desctop UI</module>
+        <module>web</module>
+    </modules>
 
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>My Service Contact</name>
     <properties>
         <java.version>1.8</java.version>
