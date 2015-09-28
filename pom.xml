@@ -4,18 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ServiceContact</groupId>
-    <artifactId>MavenServiseContact</artifactId>
+    <groupId>MyService</groupId>
+    <artifactId>ServiceContact</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>core api</module>
-        <module>core impl</module>
         <module>dao</module>
-        <module>desctop UI</module>
-        <module>web</module>
+        <module>coreImpl</module>
+        <module>desctopUI</module>
+        <module>coreapi</module>
+        <module>webApp</module>
+
     </modules>
 
-    <packaging>jar</packaging>
 
     <name>My Service Contact</name>
 
@@ -41,6 +42,9 @@
 
         </dependencies>
     </dependencyManagement>
+
+
+
 
 
 </project>

@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ServiceContact.iml" filepath="$PROJECT_DIR$/ServiceContact.iml" />
-      <module fileurl="file://$PROJECT_DIR$/core api/core api.iml" filepath="$PROJECT_DIR$/core api/core api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/core impl/core impl.iml" filepath="$PROJECT_DIR$/core impl/core impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServiceContacts.iml" filepath="$PROJECT_DIR$/ServiceContacts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coreImpl/coreImpl.iml" filepath="$PROJECT_DIR$/coreImpl/coreImpl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coreapi/coreapi.iml" filepath="$PROJECT_DIR$/coreapi/coreapi.iml" />
       <module fileurl="file://$PROJECT_DIR$/dao/dao.iml" filepath="$PROJECT_DIR$/dao/dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/desctop UI/desctop UI.iml" filepath="$PROJECT_DIR$/desctop UI/desctop UI.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/desctopUI/desctopUI.iml" filepath="$PROJECT_DIR$/desctopUI/desctopUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webApp/webApp.iml" filepath="$PROJECT_DIR$/webApp/webApp.iml" />
     </modules>
   </component>
 </project>

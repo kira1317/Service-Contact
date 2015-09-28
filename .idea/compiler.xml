@@ -22,11 +22,27 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="ServiceContact" />
+        <module name="coreapi" />
+        <module name="coreImpl" />
+        <module name="dao" />
+        <module name="desctopUI" />
+        <module name="webApp" />
+      </profile>
+      <profile default="false" name="Annotation profile for web" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ServiceContact" target="1.5" />
+      <module name="coreapi" target="1.5" />
+      <module name="coreImpl" target="1.5" />
+      <module name="dao" target="1.5" />
+      <module name="desctopUI" target="1.5" />
+      <module name="ServiceContacts" target="1.5" />
+      <module name="web" target="1.6" />
+      <module name="webApp" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
