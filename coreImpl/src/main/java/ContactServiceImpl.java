@@ -1,15 +1,38 @@
 import core.model.Contact;
 import core.model.Message;
+import core.model.Place;
+import ua.service.contact.dao.service.impl.ContactDao;
+import ua.service.contact.dao.service.impl.HobbyDao;
+import ua.service.contact.dao.service.impl.MessagerDao;
+import ua.service.contact.dao.service.impl.PlaseDao;
 
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
 /**
  * Created by Администратор on 10.09.15.
  */
+
+@Service
 public class ContactServiceImpl implements ContactService {
+
+
+    @Autowired
+    private ContactDao contactDao;
+    @Autowired
+    private HobbyDao hobbyDao;
+    @Autowired
+    private MessagerDao messagerDao;
+    @Autowired
+    private PlaseDao plaseDao;
+
 
     @Override
     public void createContact(String login, String password, LocalDate date) {
@@ -42,27 +65,29 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public List<Contact> getAllContacts() {
-        return null;
+    public Collection<Contact> getAllContacts() {
+        return contactDao.getAll();
     }
 
     @Override
-    public Collection<Contact> getAllHobby() {
-        return null;
+    public Collection<String> getAllHobby() {
+        return hobbyDao.getAll();
     }
 
     @Override
-    public Collection<Contact> getAllMessage() {
-        return null;
+    public Collection<Message> getAllMessage() {
+        return messagerDao.getAll();
     }
 
     @Override
-    public Collection<Contact> getAllPlace() {
-        return null;
+    public Collection<Place> getAllPlace() {
+        return plaseDao.getAll();
     }
 
     @Override
     public void clearAll() {
+
+
 
     }
 }

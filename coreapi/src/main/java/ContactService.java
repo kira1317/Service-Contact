@@ -1,5 +1,6 @@
 import core.model.Contact;
 import core.model.Message;
+import core.model.Place;
 import ua.service.contact.dao.service.impl.ContactDao;
 import ua.service.contact.dao.service.impl.HobbyDao;
 import ua.service.contact.dao.service.impl.MessagerDao;
@@ -16,11 +17,6 @@ import java.util.Set;
  */
 public interface ContactService {
 
-    ContactDao contactDao = null;
-    HobbyDao hobbyDao = null;
-    PlaseDao placeDao = null;
-    MessagerDao messageDao = null;
-
     void createContact(String login,String password,LocalDate date);
     void addHobby(String title, String description);
     void addPlace(String title, String description, double latitude, double longitude);
@@ -29,9 +25,9 @@ public interface ContactService {
     List<Message> getConversation(Contact contact, Contact contactFriend);
 
     Collection<Contact> getAllContacts();
-    Collection<Contact> getAllHobby();
-    Collection<Contact> getAllMessage();
-    Collection<Contact> getAllPlace();
+    Collection<String> getAllHobby();
+    Collection<Message> getAllMessage();
+    Collection<Place> getAllPlace();
     void clearAll();
 
 
