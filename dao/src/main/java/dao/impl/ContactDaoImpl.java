@@ -42,7 +42,7 @@ public class ContactDaoImpl implements ContactDao {
 
         int id=contactDto.getIdContact();
         List<Contact> contacts = sessionFactory.getCurrentSession()
-                .createQuery("select i from Contact i where i.id = :id")
+                .createQuery("select i from CONTACT i where i.id = :id")
                 .setParameter("id",id).list();
         if (contacts.isEmpty()) {
             return null;

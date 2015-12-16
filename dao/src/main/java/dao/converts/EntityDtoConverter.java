@@ -70,19 +70,22 @@ public class EntityDtoConverter {
 
 
 
-        /*Set<Massege> masseges=new HashSet<Massege>();
-        for (MessageDto message: contactDto.getMessages()){
+        Set<Massege> masseges=new HashSet<Massege>();
+        for (MassegeDto messageDto: contactDto.getMessageDto()){
 
-            masseges.add(convert(message));
+            masseges.add(convert(messageDto));
 
         }
-        contact.setPlaces(masseges);
-        */
+        contact.setMassege(masseges);
 
-        /*Security security=new Security();
-        security.setIdContact();
 
-        contact.setSecurity(contactDto.getSecurityDto());*/
+        Security security=new Security();
+        security.setIdContact(contactDto.getSecurityDto().getIdSecurity());
+        security.setLogin(contactDto.getSecurityDto().getLogin());
+        security.setPass(contactDto.getSecurityDto().getPass());
+        contact.setSecurity(security);
+
+
 
         Set<Contact> friends=new HashSet<Contact>();
         for (ContactDto friend: contactDto.getFriend()){
@@ -126,8 +129,23 @@ public class EntityDtoConverter {
         contactDto.setPlases(places);
 
 
-      /// contactDto.setMessageDto(contact.getMassege());
-       ///Serurity
+        Set<MassegeDto> masseges=new HashSet<MassegeDto>();
+        for (Massege message: contact.getMassege()){
+
+            masseges.add(convert(message));
+
+        }
+        contactDto.setMessageDto(masseges);
+
+
+
+        SecurityDto securityDto=new SecurityDto();
+        securityDto.setIdSecurity(contactDto.getSecurityDto().getIdSecurity());
+        securityDto.setLogin(contactDto.getSecurityDto().getLogin());
+        securityDto.setPass(contactDto.getSecurityDto().getPass());
+        contactDto.setSecurityDto(securityDto);
+
+
 
 
         Set<ContactDto> friends=new HashSet<ContactDto>();
@@ -178,12 +196,13 @@ public class EntityDtoConverter {
             return null;
         }
 
-        Massege massege=new Massege();
+          Massege massege=new Massege();
 
-        //massege.setId(massegeDto.getIdMasseger());
+          massege.setIdMasseger(massegeDto.getIdMasseger());
           massege.setContent(massegeDto.getContent());
-        //massege.setFrom(massegeDto.getFrom());
-        //massege.setTo(massegeDto.getFrom());
+          massege.setFrom(massegeDto.getFrom());
+          massege.setDateMassege(massegeDto.getDateMassege());
+          massege.setTo(convert(massegeDto.getTo()));
 
         return massege;
     }
@@ -197,10 +216,12 @@ public class EntityDtoConverter {
 
         MassegeDto massegeDto=new MassegeDto();
 
+        massegeDto.setIdMasseger(massege.getIdMasseger());
         massegeDto.setContent(massege.getContent());
-        massegeDto.setContent(massege.getContent());
-      //massegeDto.getTo(massege.getTo());
-      //massegeDto.setFrom(massege.getFrom());
+        massegeDto.setDateMassege(massege.getDateMassege());
+        massegeDto.setFrom(massege.getFrom());
+        massegeDto.setTo(convert(massege.getTo()));
+
 
         return massegeDto;
     }
