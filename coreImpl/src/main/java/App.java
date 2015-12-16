@@ -1,4 +1,7 @@
+import core.model.ContactDto;
 import dao.ContactDao;
+import dao.entity.Contact;
+import dao.impl.ContactDaoImpl;
 import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +17,15 @@ public class App {
 
          ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
          ContactDao contactDao = context.getBean(ContactDao.class);
-         contactDao.allContact();
+
+         for(ContactDto contactDto: contactDao.allContact())
+         {
+
+             System.out.printf(contactDto.getFirstName()+" "+contactDto.getLastName()+" "+
+                               contactDto.getBirthDate()+"\n");
+
+         }
+
 
          context.stop();
 
@@ -24,7 +35,7 @@ public class App {
 
         System.out.println(context.getBeansOfType(ContactDto.class));
 
-        Contact contact = context.getBean(Contact .class);
+        Contact contact = context.getBean(Contact.class);
 
         System.out.println(contact);
 

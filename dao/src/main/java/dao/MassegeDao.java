@@ -1,5 +1,7 @@
 package dao;
 
+import core.model.ContactDto;
+import core.model.MassegeDto;
 import dao.entity.Contact;
 import dao.entity.Massege;
 
@@ -11,7 +13,8 @@ import java.util.List;
 public interface MassegeDao {
 
 
-        void storeMessage(Massege massege);
-        List<Massege> getConversation(Contact contact1, Contact contact2);
+        void addMessage(MassegeDto massegeDto);
+        void deleteMessage(MassegeDto massegeDto);
+        List<MassegeDto> getConversation(ContactDto contactDto1, ContactDto contactDto2);
 
 }

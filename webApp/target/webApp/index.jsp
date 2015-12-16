@@ -53,9 +53,9 @@
 
             <a class="btn btn-primary btn-lg" href=registration.htm role="button">Registration »</a></p>
 
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">VK »</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button">FB »</a>
-            <a class="btn btn-primary btn-lg" href="#" role="button">TW »</a>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">VK»</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">FB»</a>
+            <a class="btn btn-primary btn-lg" href="#" role="button">TW»</a>
 
         </p>
 

@@ -1,17 +1,16 @@
 package dao;
 
-import core.model.ContactDto;
-import dao.entity.Contact;
-import dao.entity.Security;
+import core.model.HobbyDto;
+import core.model.SecurityDto;
 
 import java.util.List;
 
 /**
- * Created by Администратор on 01.12.15.
+ * Created by Администратор on 15.12.15.
  */
 public interface SecurityDao {
 
-    void addSecurity(Security security);
-    void deleteContact(Security security);
-
+    void addSecurity(SecurityDto securityDto);
+    List<SecurityDto> getAllSecurity();
+    void deleteSecurity(SecurityDto securityDto);
 }

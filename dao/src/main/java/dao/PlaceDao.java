@@ -1,9 +1,11 @@
 package dao;
 
 
+import core.model.PlaceDto;
 import dao.entity.Contact;
 import dao.entity.Place;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,8 +13,8 @@ import java.util.Set;
  */
 public interface PlaceDao {
 
-    void addPlace(Place place);
-    void deletePlace(Place place);
-    Set<Contact> getAllContacts(Place place);
+    void addPlace(PlaceDto placeDto);
+    void deletePlace(PlaceDto place);
+    List<PlaceDto> getAllContacts();
 
 }

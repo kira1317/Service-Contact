@@ -5,6 +5,7 @@ import core.model.PlaceDto;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -15,20 +16,30 @@ public interface ContactService {
 
     void createContact(String login,String password);
 
-    void addContact(String firstName, String lastName, LocalDate date);
+    void addContact(String firstName, String lastName, Date date);
+    void editContact(ContactDto contactDto);
+
     void addHobby(String title, String description);
+    void deleteHobby(HobbyDto hobbyDto);
+
     void addPlace(String title, String description);
+    void deletePlace(PlaceDto placeDto);
 
     void addFriendship(ContactDto contact, ContactDto contactFriend);
     List<ContactDto> getFriendList(ContactDto contact);
-    List<MassegeDto> getMasseges(ContactDto contact, ContactDto contactFriend);
+    void deleteFriendship(ContactDto contact, ContactDto contactFriend);
+
+    void addMassege(ContactDto contact, ContactDto contactFriend, String text);
+    List<MassegeDto> getMassegeList(ContactDto contact1,ContactDto contact2);
+    void deleteMassege(ContactDto contact, ContactDto contactFriend);
+
 
     Collection<ContactDto> getAllContacts();
+
     Collection<HobbyDto> getAllHobby();
-    Collection<MassegeDto> getAllMassege();
     Collection<PlaceDto> getAllPlace();
 
-    void clearAll();
+    void clear(ContactDto contact);
 
 
 

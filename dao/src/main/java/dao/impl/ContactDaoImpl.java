@@ -27,20 +27,22 @@ public class ContactDaoImpl implements ContactDao {
 
     public List<ContactDto> allContact(){
 
-        List<Contact> contacts = sessionFactory.getCurrentSession().createQuery("from ContactService").list();
+        List<Contact> contacts = sessionFactory.getCurrentSession().createQuery("from Contact").list();
         List<ContactDto> result = new ArrayList<ContactDto>(contacts.size());
         for (Contact contact : contacts) {
             result.add(convert(contact));
-            System.out.println(contact.getFirstName()+" "+contact.getLastName());
+
         }
         return result;
 
     }
 
     @Override
-    public ContactDto findContact(int id) {
+    public ContactDto findContact(ContactDto contactDto) {
+
+        int id=contactDto.getIdContact();
         List<Contact> contacts = sessionFactory.getCurrentSession()
-                .createQuery("select i from ContactService i where i.id = :id")
+                .createQuery("select i from Contact i where i.id = :id")
                 .setParameter("id",id).list();
         if (contacts.isEmpty()) {
             return null;
@@ -51,18 +53,23 @@ public class ContactDaoImpl implements ContactDao {
     }
 
 
+    @Transactional(readOnly = false)
+    public void addContact(ContactDto contactDto) {
+        Contact contact = convert(contactDto);
+        sessionFactory.getCurrentSession().save(contact);
+    }
 
-    public void addContact(Contact contact) {
+    @Transactional(readOnly = false)
+    public void editContact(ContactDto contactDto) {
+        Contact contact = convert(contactDto);
+        sessionFactory.getCurrentSession().saveOrUpdate(contact);
 
     }
 
-    public void editContact(Contact contact) {
-
-
-    }
-
-    public void deleteContact(Contact contact) {
-
+    @Transactional(readOnly = false)
+    public void deleteContact(ContactDto contactDto) {
+        Contact contact = convert(contactDto);
+        sessionFactory.getCurrentSession().delete(contact);
     }
 
 

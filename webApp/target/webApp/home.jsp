@@ -16,10 +16,9 @@
     <!-- Bootstrap core JS -->
     <script type="text/javascript" src="resources/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="resources/jquery-ui.js"></script>
-
     <script type="text/javascript" src="resources/bootstrap.min.js" ></script>
-
     <script type="text/javascript" src="resources/my-js.js"></script>
+
 
 
 </head>

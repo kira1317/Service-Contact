@@ -23,7 +23,6 @@ public class Contact{
     @Column(name = "LASTNAME")
     private String lastName;
 
-
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTHDATE")
     private Date birthDate;
@@ -53,8 +52,6 @@ public class Contact{
     private Set<Place> places=new HashSet<Place>();
 
 
-
-
     @ManyToMany(cascade={CascadeType.ALL})
     @JoinTable(
             name = "FRIENDSHIP",
@@ -63,13 +60,14 @@ public class Contact{
     )
     private Set<Contact> contactsFriends;
 
-    /*@ManyToMany(cascade={CascadeType.ALL})
+
+    //@Transient
+    @ManyToMany(cascade={CascadeType.ALL})
     @JoinTable(
             name = "MASSEGE",
-            inverseJoinColumns = @JoinColumn(name = "ID"),
-            joinColumns = @JoinColumn(name = "IDCONTACT1")
-    )*/
-    @Transient
+            inverseJoinColumns = @JoinColumn(name = "IDCONTACT1"),
+            joinColumns = @JoinColumn(name = "IDCONTACT2")
+    )
     private Set<Massege> massege;
 
 

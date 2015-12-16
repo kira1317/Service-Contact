@@ -9,7 +9,7 @@ public class MassegeDto{
 
 
         private int idMasseger;
-        private ContactDto from;
+        private int from;
         private ContactDto to;
         private String content;
         private Date dateMassege;
@@ -22,11 +22,11 @@ public class MassegeDto{
                 this.idMasseger = idMasseger;
         }
 
-        public ContactDto getFrom() {
+        public int getFrom() {
                 return from;
         }
 
-        public void setFrom(ContactDto from) {
+        public void setFrom(int from) {
                 this.from = from;
         }
 
@@ -73,7 +73,7 @@ public class MassegeDto{
                 MassegeDto that = (MassegeDto) o;
 
                 if (idMasseger != that.idMasseger) return false;
-                if (from != null ? !from.equals(that.from) : that.from != null) return false;
+                if (from != that.from) return false;
                 if (to != null ? !to.equals(that.to) : that.to != null) return false;
                 if (content != null ? !content.equals(that.content) : that.content != null) return false;
                 return !(dateMassege != null ? !dateMassege.equals(that.dateMassege) : that.dateMassege != null);
@@ -83,7 +83,7 @@ public class MassegeDto{
         @Override
         public int hashCode() {
                 int result = idMasseger;
-                result = 31 * result + (from != null ? from.hashCode() : 0);
+                result = 31 * result + from;
                 result = 31 * result + (to != null ? to.hashCode() : 0);
                 result = 31 * result + (content != null ? content.hashCode() : 0);
                 result = 31 * result + (dateMassege != null ? dateMassege.hashCode() : 0);

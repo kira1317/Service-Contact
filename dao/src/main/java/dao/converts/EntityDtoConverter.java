@@ -3,6 +3,9 @@ package dao.converts;
 import core.model.*;
 import dao.entity.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Created by ����� on 05.11.2015.
  */
@@ -18,7 +21,6 @@ public class EntityDtoConverter {
         security.setIdContact(securityDto.getIdSecurity());
         security.setLogin(securityDto.getLogin());
         security.setPass(securityDto.getPass());
-
 
         return security;
     }
@@ -39,7 +41,6 @@ public class EntityDtoConverter {
 
 
 
-
     public static Contact convert(ContactDto contactDto){
 
          if(contactDto == null){
@@ -51,14 +52,49 @@ public class EntityDtoConverter {
         contact.setLastName(contactDto.getLastName());
         contact.setBirthDate(contactDto.getBirthDate());
 
+        Set<Hobby> hobbies=new HashSet<Hobby>();
+        for (HobbyDto hobby: contactDto.getHobbies()){
 
-       /// contact.setHobbes(contactDto.getHobbies());
-   ///     contact.setPlaces(contactDto.getPlases());
-    ///    contact.setMassege(contactDto.getMessageDto());
-     ///   contact.setSecurity(contactDto.getSecurityDto());
+            hobbies.add(convert(hobby));
+
+        }
+        contact.setHobbes(hobbies);
+
+        Set<Place> places=new HashSet<Place>();
+        for (PlaceDto place: contactDto.getPlases()){
+
+            places.add(convert(place));
+
+        }
+        contact.setPlaces(places);
+
+
+
+        /*Set<Massege> masseges=new HashSet<Massege>();
+        for (MessageDto message: contactDto.getMessages()){
+
+            masseges.add(convert(message));
+
+        }
+        contact.setPlaces(masseges);
+        */
+
+        /*Security security=new Security();
+        security.setIdContact();
+
+        contact.setSecurity(contactDto.getSecurityDto());*/
+
+        Set<Contact> friends=new HashSet<Contact>();
+        for (ContactDto friend: contactDto.getFriend()){
+
+            friends.add(convert(friend));
+
+        }
+        contact.setContactsFriends(friends);
 
         return contact;
     }
+
     public static ContactDto convert(Contact contact){
 
         if(contact == null){
@@ -72,13 +108,41 @@ public class EntityDtoConverter {
         contactDto.setLastName(contact.getLastName());
         contactDto.setBirthDate(contact.getBirthDate());
 
-      /// contactDto.setHobbies(contact.getHobbes());
-       //// contactDto.setPlases(contact.getPlaces());
-       /// contactDto.setMessageDto(contact.getMassege());
-      ///  contactDto.setFriend(contact.getFriend());
+
+        Set<HobbyDto> hobbies=new HashSet<HobbyDto>();
+        for (Hobby hobby: contact.getHobbes()){
+
+            hobbies.add(convert(hobby));
+
+        }
+        contactDto.setHobbies(hobbies);
+
+        Set<PlaceDto> places=new HashSet<PlaceDto>();
+        for (Place place: contact.getPlaces()){
+
+            places.add(convert(place));
+
+        }
+        contactDto.setPlases(places);
+
+
+      /// contactDto.setMessageDto(contact.getMassege());
+       ///Serurity
+
+
+        Set<ContactDto> friends=new HashSet<ContactDto>();
+        for (Contact friend: contact.getContactsFriends()){
+
+            friends.add(convert(contact));
+
+        }
+        contactDto.setFriend(friends);
 
         return contactDto;
     }
+
+
+
     public static Hobby convert(HobbyDto hobbyDto){
 
         if(hobbyDto == null){
@@ -93,6 +157,7 @@ public class EntityDtoConverter {
 
         return hobby;
     }
+
     public static HobbyDto convert(Hobby hobby){
 
         if(hobby == null){
@@ -115,13 +180,14 @@ public class EntityDtoConverter {
 
         Massege massege=new Massege();
 
-       // massege.setId(massegeDto.getIdMasseger());
-        massege.setContent(massegeDto.getContent());
-   //     massege.setFrom(massegeDto.getFrom());
-   //     massege.setTo(massegeDto.getFrom());
+        //massege.setId(massegeDto.getIdMasseger());
+          massege.setContent(massegeDto.getContent());
+        //massege.setFrom(massegeDto.getFrom());
+        //massege.setTo(massegeDto.getFrom());
 
         return massege;
     }
+
     public static MassegeDto convert(Massege massege){
 
 
@@ -133,8 +199,8 @@ public class EntityDtoConverter {
 
         massegeDto.setContent(massege.getContent());
         massegeDto.setContent(massege.getContent());
-     //   massegeDto.getTo(massege.getTo());
-      //  massegeDto.setFrom(massege.getFrom());
+      //massegeDto.getTo(massege.getTo());
+      //massegeDto.setFrom(massege.getFrom());
 
         return massegeDto;
     }
@@ -153,6 +219,7 @@ public class EntityDtoConverter {
 
         return place;
     }
+
     public static PlaceDto convert(Place place){
 
         if(place == null){
@@ -167,8 +234,5 @@ public class EntityDtoConverter {
 
         return placeDto;
     }
-
-
-
 
 }

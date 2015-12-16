@@ -12,8 +12,8 @@ import java.util.StringTokenizer;
 public interface ContactDao {
 
     List<ContactDto> allContact();
-    ContactDto findContact(int id);
-    void addContact(Contact contact);
-    void editContact(Contact contact);
-    void deleteContact(Contact contact);
+    ContactDto findContact(ContactDto contactDto);
+    void addContact(ContactDto contactDto);
+    void editContact(ContactDto contactDto);
+    void deleteContact(ContactDto contactDto);
 }

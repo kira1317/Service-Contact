@@ -3,6 +3,7 @@ package dao.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "MASSEGE")
@@ -10,56 +11,49 @@ public class Massege {
 
     @Id
     @Column(name = "MASSEGE_ID")
-    private int id;
+    private int idMasseger;
 
-   /* @ManyToMany(cascade={CascadeType.ALL})
+    @Column(name = "IDCONTACT1")
+    private int from;
+
+    @Column(name = "IDCONTACT2")
+    @OneToOne(cascade={CascadeType.ALL})
     @JoinTable(
             name = "CONTACT",
-            inverseJoinColumns = @JoinColumn(name = "ID"),
-            joinColumns = @JoinColumn(name = "IDCONTACT1")
-    )
-    private Set<Contact> from;
-
-    @ManyToMany(cascade={CascadeType.ALL})
-    @JoinTable(
-            name = "CONTACT",
-            inverseJoinColumns = @JoinColumn(name = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "IDCONTACT1"),
             joinColumns = @JoinColumn(name = "IDCONTACT2")
     )
-    private Set<Contact> to;*/
-
+    private Contact to;
 
     @Column(name = "MESSAGETEXT")
     private String content;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "DATE_MASSEGE")
     private Date dateMassege;
 
-
-    public int getId() {
-        return id;
+    public int getIdMasseger() {
+        return idMasseger;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdMasseger(int idMasseger) {
+        this.idMasseger = idMasseger;
     }
 
-  /*  public Set<Contact> getTo() {
-        return to;
-    }
-
-    public void setTo(Set<Contact> to) {
-        this.to = to;
-    }
-
-    public Set<Contact> getFrom() {
+    public int getFrom() {
         return from;
     }
 
-    public void setFrom(Set<Contact> from) {
+    public void setFrom(int from) {
         this.from = from;
-    }*/
+    }
+
+    public Contact getTo() {
+        return to;
+    }
+
+    public void setTo(Contact to) {
+        this.to = to;
+    }
 
     public String getContent() {
         return content;
@@ -80,10 +74,10 @@ public class Massege {
     @Override
     public String toString() {
         return "Massege{" +
-                "id=" + id +
-              //  ", from=" + from +
-             //   ", to=" + to +
-                ", content='" + content + '\'' +
+                "idMasseger=" + idMasseger +
+                ", from=" + from +
+                ", to=" + to +
+                ", content=" + content +
                 ", dateMassege=" + dateMassege +
                 '}';
     }
@@ -95,9 +89,9 @@ public class Massege {
 
         Massege massege = (Massege) o;
 
-        if (id != massege.id) return false;
-      //  if (from != null ? !from.equals(massege.from) : massege.from != null) return false;
-      //  if (to != null ? !to.equals(massege.to) : massege.to != null) return false;
+        if (idMasseger != massege.idMasseger) return false;
+        if (from != massege.from) return false;
+        if (to != null ? !to.equals(massege.to) : massege.to != null) return false;
         if (content != null ? !content.equals(massege.content) : massege.content != null) return false;
         return !(dateMassege != null ? !dateMassege.equals(massege.dateMassege) : massege.dateMassege != null);
 
@@ -105,9 +99,9 @@ public class Massege {
 
     @Override
     public int hashCode() {
-        int result = id;
-      //  result = 31 * result + (from != null ? from.hashCode() : 0);
-      //  result = 31 * result + (to != null ? to.hashCode() : 0);
+        int result = idMasseger;
+        result = 31 * result + from;
+        result = 31 * result + (to != null ? to.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (dateMassege != null ? dateMassege.hashCode() : 0);
         return result;

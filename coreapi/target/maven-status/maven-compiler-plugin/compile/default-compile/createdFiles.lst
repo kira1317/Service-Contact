@@ -1,0 +1,6 @@
+core\model\ContactDto.class
+ContactService.class
+core\model\HobbyDto.class
+core\model\SecurityDto.class
+core\model\PlaceDto.class
+core\model\MassegeDto.class
