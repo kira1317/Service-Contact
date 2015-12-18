@@ -29,6 +29,12 @@ public class ContactServiceImpl implements ContactService {
     private FriendShipDao friendShipDao;
 
 
+    public ContactDto getContact(int id) {
+        ContactDto contactDto=new ContactDto();
+        contactDto.setIdContact(id);
+        return contactDao.findContact(contactDto);
+    }
+
     public void createContact(String login, String password) {
 
         SecurityDto securityDto=new SecurityDto();

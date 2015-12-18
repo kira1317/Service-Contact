@@ -16,10 +16,26 @@
     <!-- Bootstrap core JS -->
     <script type="text/javascript" src="resources/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="resources/jquery-ui.js"></script>
-
     <script type="text/javascript" src="resources/bootstrap.min.js" ></script>
-
     <script type="text/javascript" src="resources/my-js.js"></script>
+
+    <!-- Bean -->
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <jsp:useBean id="HobbyAll" scope="request" type="java.util.List"/>
+    <jsp:useBean id="HobbyContact" scope="request" type="java.util.List"/>
+    <jsp:useBean id="PlaceAll" scope="request" type="java.util.List"/>
+    <jsp:useBean id="PlaceContact" scope="request" type="java.util.List"/>
+    <jsp:useBean id="ContactAll" scope="request" type="java.util.List"/>
+    <jsp:useBean id="FriendShipAll" scope="request" type="java.util.List"/>
+    <jsp:useBean id="MassegeAll" scope="request" type="java.util.List"/>
+
+    <jsp:useBean id="contactJ" scope="request" type="core.model.ContactDto"/>
+    <jsp:useBean id="hobbyJ" scope="request" type="core.model.HobbyDto"/>
+    <jsp:useBean id="placeJ" scope="request" type="core.model.PlaceDto"/>
+    <jsp:useBean id="friendshipJ" scope="request" type="core.model.ContactDto"/>
+    <jsp:useBean id="massegeJ" scope="request" type="core.model.MassegeDto"/>
+
+
 
 
 </head>
@@ -39,7 +55,7 @@
                 <li role="presentation"><a href="index.jsp">Exit</a></li>
             </ul>
         </nav>
-        <h3 class="text-muted" id="login">Login</h3>
+        <h3 class="text-muted" id="login">${contactJ.firstName} ${contactJ.lastName}</h3>
     </div>
 
     <div class="jumbotron"  id="home">
@@ -50,21 +66,17 @@
 
                 <tr>
                     <td>First name</td>
-                    <td><input id="firstName" type="text" size="22" /></td>
+                    <td><input id="firstName" type="text" size="22" value="${contactJ.firstName}" /></td>
                 </tr>
 
                 <tr>
                     <td>Last name</td>
-                    <td><input id="lastName" type="text" size="22" /></td>
+                    <td><input id="lastName" type="text" size="22" value="${contactJ.lastName}" /></td>
                 </tr>
 
                 <tr>
                     <td>Date bith day</td>
-                    <td>
-                        <input id="day" type="text" size="2" />/
-                        <input id="month" type="text" size="2" />/
-                        <input id="year" type="text" size="2"  />
-                    </td>
+                    <td><input id="data" type="text" size="22" value="${contactJ.birthDate}" /></td>
                 </tr>
 
                 </tbody>
@@ -84,36 +96,39 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <tbody>
-
-                <tr><td>*****</td></tr>
-
-                <tr><td>*****</td></tr>
-
-                <tr><td>*****</td></tr>
-
+                <c:forEach items="${HobbyContact}" var="hobbyJ">
+                    <tr>
+                        <td>
+                            <option>${hobbyJ.title}</option>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
 
-        </br>
-        <br>
-        <select id="Ahobby">
-            <option></option>
-        </select>
+        <div id="Ahobby" class="form-group">
+            <label for="hobbySelect">Select hobby</label>
+            <select class="form-control" id="hobbySelectAll">
+                <c:forEach items="${HobbyAll}" var="hobbyJ">
+                    <option>${hobbyJ.title}</option>
+                </c:forEach>
+            </select>
+        </div>
 
-        </br>
-        <br>
         <p>
             <a class="btn btn-lg btn-success" href="#" role="button" id="addHobby"> Add Hobby </a>
         </p>
-        </br>
-        <br>
 
-        <select id="Dhobby">
-            <option></option>
-        </select>
-        </br>
-        <br>
+
+        <div id="Dhobby" class="form-group">
+            <label for="hobbySelect">Select hobby</label>
+            <select class="form-control" id="hobbySelect">
+                <c:forEach items="${hobbyContact}" var="hobbyJ">
+                    <option>${hobbyJ.title}</option>
+                </c:forEach>
+            </select>
+        </div>
 
         <p>
             <a class="btn btn-lg btn-warning" href="#" role="button" id="deleteHobby">  Delete Hobby </a>
@@ -128,36 +143,38 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <tbody>
-
-                <tr><td>*****</td> </tr>
-
-                <tr><td>*****</td></tr>
-
-                <tr><td>*****</td></tr>
-
+                <c:forEach items="${PlaceContact}" var="placeJ">
+                    <tr>
+                        <td>
+                            <option>${placeJ.title}</option>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
-        <br>
-        <br>
-        <select id="Aplace">
-            <option></option>
-        </select>
-        </br>
-        <br>
+
+        <div id="Aplace" class="form-group">
+            <label for="placeSelect">Select place</label>
+            <select class="form-control" id="placeSelectAll">
+                <c:forEach items="${PlaceAll}" var="placeJ">
+                    <option>${placeJ.title}</option>
+                </c:forEach>
+            </select>
+        </div>
 
         <p>
-            <a class="btn btn-lg btn-success" href="#" role="button" id="addPlace"> Add Place</a>
+            <a class="btn btn-lg btn-success" href="#" role="button" id="addPlace">Add Place</a>
         </p>
 
-        </br>
-        <br>
-        <select id="Dplace">
-            <option></option>
-        </select>
-
-        </br>
-        <br>
+        <div id="Dplace" class="form-group">
+            <label for="placeSelect">Select place</label>
+            <select class="form-control" id="placeSelect">
+                <c:forEach items="${PlaceContact}" var="placeJ">
+                    <option>${placeJ.title}</option>
+                </c:forEach>
+            </select>
+        </div>
 
         <p>
             <a class="btn btn-lg btn-warning" href="#" role="button" id="deletePlace">  Delete Place </a>
@@ -169,46 +186,40 @@
         <div class="table-responsive">
             <table class="table table-striped">
                 <tbody>
-
-                <tr>
-
-                    <td>*****</td>
-                </tr>
-
-                <tr>
-
-                    <td>*****</td>
-                </tr>
-
-                <tr>
-
-                    <td>*****</td>
-                </tr>
-
+                <c:forEach items="${FriendShipAll}" var="contactJ">
+                    <tr>
+                        <td>
+                            <option>${contactJ.firstName}</option>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
 
-        <br>
         <p>
 
-            <select id="AFriend">
-                <option></option>
+        <div id="AFriend" class="form-group">
+            <label for="friendSelect">Select contact</label>
+            <select class="form-control" id="friendSelectAll">
+                <c:forEach items="${ContactAll}" var="contactJ">
+                    <option>${contactJ.firstName}</option>
+                </c:forEach>
             </select>
-            </br>
-            <br>
+        </div>
 
         <p>
-            <a class="btn btn-lg btn-success" href="#" role="button" id="AddFriend"> Add Friend</a>
+            <a class="btn btn-lg btn-success" href="#" role="button" id="AddFriend">Add Friend</a>
         </p>
 
-        <br>
-        <select id="DFriend">
-            <option></option>
-        </select>
-
-        </br>
-        <br>
+        <div id="DFriend" class="form-group">
+            <label for="friendSelect">Select friend</label>
+            <select class="form-control" id="friendSelect">
+                    <c:forEach items="${FriendShipAll}" var="contactJ">
+                        <option>${contactJ.firstName}</option>
+                    </c:forEach>
+            </select>
+        </div>
 
         <p>
             <a class="btn btn-lg btn-warning" href="#" role="button" id="deleteFriend">  Delete Friend </a>
@@ -218,21 +229,48 @@
 
     <div class="jumbotron hidden"  id="masseges">
         <h3>Masseges</h3>
-        <h4>Contact</h4>
+        <br>
+        </br>
 
-        <select id="Select1">
-            <option></option>
-        </select>
 
-        <br />
-        <br />
+        <div id="ContactMassege" class="form-group">
+            <label for="friendSelect">Select contact</label>
+            <select class="form-control" id="contactSelectAll">
+                <c:forEach items="${ContactAll}" var="contactJ">
+                    <option>${contactJ.firstName}==={massegeJ.to.firstName}</option>
+                </c:forEach>
+            </select>
+        </div>
+
+
+        <div>
+
+              <c:forEach items="${MassegeAll}" var="massegeJ">
+                <option>
+
+                  <p>
+                     ${massegeJ.content}
+                  </p>
+
+                  <p>
+                     ${massegeJ.dateMassege}
+                  </p>
+
+                </option>
+              </c:forEach>
+
+        </div>
+
+
         <div class="stylemassage">
-            History masseges<br />
-            <input id="textMassege" type="text" />
+
+            <br />
+                <input id="textMassege" type="text" />
             <br />
         </div>
+        <br>
         <p>
-            <a class="btn btn-xs btn-primary" href="#" role="button" id="sendAMassege">Send a message</a>
+            <a class="btn btn-xl btn-primary" href="#" role="button" id="sendAMassege">Send a message</a>
         </p>
     </div>
 

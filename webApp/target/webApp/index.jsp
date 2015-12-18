@@ -51,7 +51,7 @@
         <p>This is my first servise.</p>
         <p>
 
-            <a class="btn btn-primary btn-lg" href=registration.htm role="button">Registration »</a></p>
+            <a class="btn btn-primary btn-lg" href=registration.jsp role="button">Registration »</a></p>
 
         <p><a class="btn btn-primary btn-lg" href="#" role="button">VK»</a>
             <a class="btn btn-primary btn-lg" href="#" role="button">FB»</a>

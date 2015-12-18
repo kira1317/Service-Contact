@@ -14,6 +14,8 @@ import java.util.Set;
  */
 public interface ContactService {
 
+    ContactDto getContact(int id);
+
     void createContact(String login,String password);
 
     void addContact(String firstName, String lastName, Date date);
